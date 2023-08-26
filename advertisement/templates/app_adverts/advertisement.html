@@ -13,31 +13,34 @@
     <a class="nav-link" href="{% url 'top-sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'adv-post' %}">
-      <span style="font-weight: bold;">Разместить объявление</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'reg' %}">
-      <span style="font-weight: bold;">Регистрация</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'log' %}">
-      <span style="font-weight: bold;">Войти</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'prof' %}">
-      <span style="font-weight: bold;">Профиль</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'logout' %}">
-      <span style="font-weight: bold;">Выйти</span>
-    </a>
-  </li>
+  {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'adv-post' %}">
+        <span style="font-weight: bold;">Разместить объявление</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'prof' %}">
+        <span style="font-weight: bold;">Профиль</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %} ">
+        <span style="font-weight: bold;">Выйти</span>
+      </a>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'reg' %}">
+        <span style="font-weight: bold;">Регистрация</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'log' %}">
+        <span style="font-weight: bold;">Войти</span>
+      </a>
+    </li>
+  {% endif %}
 </ul>
 
 <div class="container" style="margin: 50px;">
